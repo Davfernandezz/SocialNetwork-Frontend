@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { CInput } from '../../components/CInput/CInput';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../../../services/authApiCalls';
+import { registerUser } from '../../services/authApiCalls';
 import "./Register.css";
 
 export const Register = () => {

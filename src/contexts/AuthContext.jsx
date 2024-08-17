@@ -5,7 +5,7 @@ const AuthContext = createContext({
   setPassport: () => {},
 });
 
-export const AuthProvider = ({ content }) => {
+export const AuthProvider = ({ children }) => {
   const [passport, setPassport] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -31,7 +31,7 @@ export const AuthProvider = ({ content }) => {
 
   return (
     <AuthContext.Provider value={{ passport, setPassport }}>
-      {content}
+      {children}
     </AuthContext.Provider>
   );
 };
