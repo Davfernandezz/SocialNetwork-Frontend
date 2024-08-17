@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import "./Register.css";
 import { CInput } from '../../components/CInput/CInput';
+import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../../../services/authApiCalls';
+import "./Register.css";
 
 export const Register = () => {
-
+    const navigate = useNavigate()
     const [credentials, setCredentials] = useState(
         {
             email: "",
@@ -11,10 +13,8 @@ export const Register = () => {
         }
     )
 
-    function handleChange(e){
-        console.log('Handle Change')
-
-        setCredentials( (prevState)=>(
+    function handleChange(e) {
+        setCredentials((prevState) => (
             {
                 ...prevState,
                 [e.target.name]: e.target.value
@@ -22,18 +22,30 @@ export const Register = () => {
         ))
     }
 
-    function register() {
-        console.log(credentials);
+    async function register() {
+        try {
+            const response = await registerUser(credentials)
+            console.log(credentials)
+
+            if (response.success) {
+                navigate('/login')
+            } else {
+                alert(response.message)
+            }
+            console.log(response)
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
         <>
             <h1>Register</h1>
           <div>
-            <CInput type="email" name="email" placeholder='Email' onChange={handleChange} />
+            <CInput type="email" name="email" placeholder='Email' emitFunction={handleChange} />
           </div>
           <div>
-            <CInput type="password" name="password" placeholder='Password' onChange={handleChange} />
+            <CInput type="password" name="password" placeholder='Password' emitFunction={handleChange} />
           </div>
           <div>
             <input type="button" value="Register" onClick={register} />
