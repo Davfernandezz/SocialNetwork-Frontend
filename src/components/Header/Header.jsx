@@ -8,7 +8,10 @@ export const Header = () => {
     return (
         <>
             <ul>
-                <div onClick={()=>navigate('/')}>Login</div>
+                <div onClick={() => navigate('/')}>Home</div>
+                <div onClick={() => navigate('/Profile')}>Profile</div>
+                <div onClick={() => navigate('/login')}>Login</div>
+                <div onClick={() => navigate('/register')}>Register</div>
             </ul>
         </>
     )
