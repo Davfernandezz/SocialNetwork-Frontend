@@ -5,31 +5,106 @@ import { useNavigate } from 'react-router-dom';
 
 export const Profile = () => {
   const [profileData, setProfileData] = useState({ name: "", email: "", is_active: "" })
-
+  const [editData, setEditData] = useState({
+      name: "",
+      email: ""
+  })
+  const [editting, setEditing] = useState(false)
   const passport = JSON.parse(localStorage.getItem("passport"))
-  let token;
   const navigate = useNavigate()
 
-  useEffect(() => {
+    useEffect(() => {
       if (!passport) {
-          navigate("/login")
+          navigate("/login");
       } else {
-          token = passport.token
+          const bringMyProfile = async () => {
+              try {
+                  const response = await getUserProfile(passport.token);
+                  if (response.success) {
+                      setProfileData(response.data);
+                  } else {
+                      navigate("/login");
+                  }
+              } catch (error) {
+                  console.log(error);
+              }
+          };
+          bringMyProfile();
       }
-  }, [])
+  }, [navigate, passport]);
 
-  const logout = () => {
-      localStorage.removeItem("passport")
-      console.log("Closed session")
+  const editButtonHandler = () => {
+      setEditData({
+          name: profileData.name,
+          email: profileData.email
+      })
+      setEditing(!editting)
+  }
+
+  useEffect(() => {
+  }, [profileData])
+  const editInputHandler = (e) => {
+      setEditData({
+          ...editData,
+          [e.target.name]: e.target.value
+      })
+  }
+
+  const confirmButtonHandler = async () => {
+      const token = passport.token;
+      const response = await updateProfile(editData, token)
+      if (response.success) {
+          const newData = await getUserProfile(token)
+          setProfileData(newData.data)
+          setEditing(!editting)
+      }
   }
 
   return (
-      <>
-          <h1>Profile</h1>
-          <p>Name: {profileData.name}</p>
-          <p>Email: {profileData.email}</p>
-          <p>Created_at: {profileData.is_active}</p>
-          <CInput type="button" name="logout" value="logout" emitFunction={logout} />
-      </>
+    <div>
+    <h1>Profile</h1>
+    <h2>Welcome {profileData.email}</h2>
+
+    {editting && (
+        <>
+            <CInput
+                type="text"
+                name="name"
+                placeholder="Name"
+                emitFunction={editInputHandler}
+            />
+            <CInput
+                type="email"
+                name="email"
+                placeholder="Email"
+                emitFunction={editInputHandler}
+            />
+        </>
+    )}
+
+    {!editting && (
+        <>
+            <p>Name: {profileData.name || "Not available"}</p>
+            <p>Email: {profileData.email}</p>
+        </>
+    )}
+
+    <p>is_active: {profileData.is_active}</p>
+
+    <CInput
+        type="button"
+        name="edit"
+        value={!editting ? "Edit" : "Cancel"}
+        emitOnClickButton={editButtonHandler}
+    />
+    {editting && (
+        <CInput
+            type="button"
+            name="save"
+            value="Save changes"
+            emitOnClickButton={confirmButtonHandler}
+        />
+    )}
+</div>
   )
 }
