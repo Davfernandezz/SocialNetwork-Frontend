@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import "./Profile.css";
 import { CInput } from '../../components/CInput/CInput';
 import { useNavigate } from 'react-router-dom';
+import { getUserProfile } from '../../services/userApiCalls';
+import "./Profile.css";
 
 export const Profile = () => {
-  const [profileData, setProfileData] = useState({ name: "", email: "", is_active: "" })
+  const [profileData, setProfileData] = useState({ name: "", email: "" })
   const [editData, setEditData] = useState({
       name: "",
       email: ""
@@ -88,8 +89,6 @@ export const Profile = () => {
             <p>Email: {profileData.email}</p>
         </>
     )}
-
-    <p>is_active: {profileData.is_active}</p>
 
     <CInput
         type="button"
