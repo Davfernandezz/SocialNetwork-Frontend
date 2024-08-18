@@ -17,3 +17,20 @@ export const getUserProfile = async (token) => {
         throw error;
     }
 }
+
+export const updateProfile = async (changes, token) => {
+    try {
+        const response = await fetch(`${URL}/profile`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(changes),
+        });
+        return await response.json()
+    } catch (error) {
+        console.error("Error updating user:", error);
+        throw error;
+    }
+}
