@@ -25,8 +25,6 @@ export const Register = () => {
     async function register() {
         try {
             const response = await registerUser(credentials)
-            console.log(credentials)
-
             if (response.success) {
                 navigate('/login')
             } else {

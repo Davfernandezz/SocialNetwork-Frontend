@@ -13,10 +13,6 @@ export const Header = () => {
     navigate("/login");
   };
 
-  console.log("Passport:", passport);
-  console.log("Passport Token:", passport?.token);
-  console.log("Passport Token Data:", passport?.tokenData);
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
       <div className="container">
