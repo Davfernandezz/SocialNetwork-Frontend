@@ -7,14 +7,24 @@ export const createPost = async (data, token) => {
         const response = await fetch(`${URL}`, {
             method: "POST",
             headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(data),
-          });
-          return await response.json();
+        });
+        return await response.json();
     } catch (error) {
-        console.error("User register error:", error);
+        console.error("Error creating post:", error);
+        throw error;
+    }
+};
+
+export const getAllPosts = async () => {
+    try {
+        const response = await fetch(`${URL}`);
+        return await response.json();
+    } catch (error) {
+        console.error("Error getting posts:", error);
         throw error;
     }
 };
