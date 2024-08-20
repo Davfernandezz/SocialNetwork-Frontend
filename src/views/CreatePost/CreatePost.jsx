@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import "./CreatePost.css";
-import { CInput } from '../../components/CInput/CInput';
+import { createPost } from '../../services/postApiCalls';
 
 export const CreatePost = () => {
     const [newPost, setNewPost] = useState({
@@ -19,7 +19,6 @@ export const CreatePost = () => {
     }, [passport, navigate]);
 
     const inputHandler = (e) => {
-        console.log(e.target.name);
         setNewPost({
             ...newPost,
             [e.target.name]: e.target.value,
@@ -42,12 +41,17 @@ export const CreatePost = () => {
             <h1>CreatePost</h1>
             <div>
                 <div>
-                <br />
+                    <br />
                     <h3>Share your daily life with others😊</h3>
                     <div>
-                    <CInput type="text" value={newPost.description} placeholder='description' emitFunction={inputHandler} />
+                        <textarea
+                            value={newPost.description}
+                            name="description"
+                            placeholder="description"
+                            onChange={(e) => inputHandler(e)}
+                        />
                         <br />
-                        <input type="button" value="Confirm" onClick={handleSubmit} />   
+                        <input type="button" value="Confirm" onClick={handleSubmit} />
                     </div>
                 </div>
             </div>
