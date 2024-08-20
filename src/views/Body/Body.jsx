@@ -6,6 +6,7 @@ import { Login } from "../Login/Login";
 import { Register }  from '../Register/Register';
 import { Profile } from '../Profile/Profile';
 import { Admin } from '../Admin/Admin';
+import { CreatePost } from '../CreatePost/CreatePost';
 
 function Body() {
   
@@ -24,6 +25,7 @@ function Body() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/createPost" element={<CreatePost />} />
         {role === "admin" && <Route path="/admin" element={<Admin />} />}
       </Routes>
     </>
