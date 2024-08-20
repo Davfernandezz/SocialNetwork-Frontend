@@ -48,6 +48,9 @@ export const Header = () => {
             <li className="nav-item">
               <CSurfer path="/createPost" content="CreatePost" />
             </li>
+            <li className="nav-item">
+              <CSurfer path="/allPosts" content="AllPosts" />
+            </li>
             {passport && passport.token && passport.tokenData?.role === "admin" && (
               <li className="nav-item">
                 <CSurfer path="/admin" content="Admin" />
