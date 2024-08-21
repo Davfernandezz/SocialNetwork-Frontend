@@ -19,12 +19,18 @@ export const createPost = async (data, token) => {
     }
 };
 
-export const getAllPosts = async () => {
+export const getAllPosts = async (token) => {
     try {
-        const response = await fetch(`${URL}`);
-        return await response.json();
+        const response = await fetch(`${URL}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+        return await response.json()
     } catch (error) {
         console.error("Error getting posts:", error);
         throw error;
     }
-};
+}
