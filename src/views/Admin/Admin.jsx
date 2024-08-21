@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./Admin.css";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { getUsers } from '../../services/userApiCalls';
 
 export const Admin = () => {
     const [users, setUsers] = useState([]);
@@ -50,11 +51,11 @@ export const Admin = () => {
                     <tbody>
                         {users.length ? (
                             users.map((user) => (
-                                <tr key={user.id}>
-                                    <td>{user.id}</td>
-                                    <td>{user.first_name || 'Not available'}</td>
+                                <tr key={user._id}>
+                                    <td>{user._id}</td>
+                                    <td>{user.name || 'Not available'}</td>
                                     <td>{user.email}</td>
-                                    <td>{formatDate(user.created_at)}</td>
+                                    <td>{formatDate(user.createdAt)}</td>
                                     <td>
                                         {/* <button type="button" name={user.id} className="btn btn-danger btn-sm" onClick={deleteUserHandler}>Delete</button> */}
                                     </td>
