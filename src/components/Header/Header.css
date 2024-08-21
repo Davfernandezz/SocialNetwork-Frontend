@@ -57,3 +57,13 @@
 .red {
     color: #e63946;
 }
+
+.logout {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    font-weight: 500;
+}

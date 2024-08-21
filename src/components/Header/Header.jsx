@@ -7,7 +7,7 @@ export const Header = () => {
   const { passport, setPassport } = useAuth();
   const navigate = useNavigate();
 
-  const logOut = () => {
+  const handleLogout = () => {
     localStorage.removeItem("passport");
     setPassport(null);
     navigate("/login");
@@ -58,7 +58,7 @@ export const Header = () => {
             )}
             {passport && passport.token ? (
               <li className="nav-item">
-                <div className="logout" onClick={logOut}>
+                <div className="logout" onClick={handleLogout}>
                   Logout
                 </div>
               </li>
