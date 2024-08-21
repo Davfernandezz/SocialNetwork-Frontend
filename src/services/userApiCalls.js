@@ -50,3 +50,19 @@ export const getUsers = async (token) => {
         throw error;
     }
 }
+
+export const deleteUserById = async (token, id) => {
+    try {
+        const response = await fetch(`${URL}/${id}`, { 
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+        return await response.json();
+    } catch (error) {
+        console.error("Error deleting user:", error);
+        throw error;
+    }
+}

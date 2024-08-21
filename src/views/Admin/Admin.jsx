@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./Admin.css";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { getUsers } from '../../services/userApiCalls';
+import { deleteUserById, getUsers } from '../../services/userApiCalls';
 
 export const Admin = () => {
     const [users, setUsers] = useState([]);
@@ -41,10 +41,10 @@ export const Admin = () => {
             navigate('/login');
             return;
         }
-        const id = +e.target.name;
+        const id = e.target.name; 
         const res = await deleteUserById(token, id);
         if (res.success) {
-            const remainingUsers = users.filter((user) => user.id !== id);
+            const remainingUsers = users.filter((user) => user._id !== id);
             setUsers(remainingUsers);
         } else {
             alert('Error al eliminar el usuario. Verifica tu sesión.');
