@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { deleteUserById, getUsers } from '../../services/userApiCalls';
 import "./Admin.css";
+import { deletePostById, getAllPosts } from '../../services/postApiCalls';
 
 export const Admin = () => {
     const [users, setUsers] = useState([]);
@@ -35,7 +36,7 @@ export const Admin = () => {
         };
 
         const bringAllPosts = async () => {
-            const allPosts = await getPosts(token);
+            const allPosts = await getAllPosts(token);
             if (allPosts.success) {
                 setPosts(allPosts.data);
             } else {
@@ -120,7 +121,6 @@ export const Admin = () => {
                     <tr>
                         <th>ID</th>
                         <th>Description</th>
-                        <th>User ID</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -130,7 +130,6 @@ export const Admin = () => {
                             <tr key={post._id}>
                                 <td>{post._id}</td>
                                 <td>{post.description || 'Not available'}</td>
-                                <td>{post.userId}</td>
                                 <td>
                                     <button type="button" name={post._id} onClick={deletePostHandler}>Delete</button>
                                 </td>
