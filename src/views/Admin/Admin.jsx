@@ -35,6 +35,22 @@ export const Admin = () => {
         bringAllUsers();
     }, [navigate, token]);
 
+    const deleteUserHandler = async (e) => {
+        if (!token) {
+            alert('No estás autorizado para realizar esta acción.');
+            navigate('/login');
+            return;
+        }
+        const id = +e.target.name;
+        const res = await deleteUserById(token, id);
+        if (res.success) {
+            const remainingUsers = users.filter((user) => user.id !== id);
+            setUsers(remainingUsers);
+        } else {
+            alert('Error al eliminar el usuario. Verifica tu sesión.');
+        }
+    };
+
   return (
     <>
         <h1>Admin</h1>
@@ -57,7 +73,7 @@ export const Admin = () => {
                                     <td>{user.email}</td>
                                     <td>{formatDate(user.createdAt)}</td>
                                     <td>
-                                        {/* <button type="button" name={user.id} className="btn btn-danger btn-sm" onClick={deleteUserHandler}>Delete</button> */}
+                                        <button type="button" name={user._id} onClick={deleteUserHandler}>Delete</button>
                                     </td>
                                 </tr>
                             )))
