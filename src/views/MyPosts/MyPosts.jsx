@@ -54,8 +54,35 @@ export const MyPosts = () => {
         }
     };
 
-
   return (
-    <div>MyPosts</div>
+    <>
+           <h1>My posts dashboard</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {posts.length ? (
+                        posts.map((post) => (
+                            <tr key={post._id}>
+                                <td>{post._id}</td>
+                                <td>{post.description || 'Not available'}</td>
+                                <td>
+                                    <button type="button" name={post._id} onClick={deletePostHandler}>Delete</button>
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td>No posts found.</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+            </>
   )
 }
