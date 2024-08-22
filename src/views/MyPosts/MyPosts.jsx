@@ -7,7 +7,7 @@ export const MyPosts = () => {
     const [posts, setPosts] = useState([]);
     const [editposts, setEditposts] = useState({
         description: "",
-        id: null, 
+        id: null,
     });
     const [editting, setEditing] = useState(false);
     const [currentEditId, setCurrentEditId] = useState(null);
@@ -41,7 +41,7 @@ export const MyPosts = () => {
     const editButtonHandler = (post) => {
         setEditposts({
             description: post.description,
-            id: post._id 
+            id: post._id
         });
         setCurrentEditId(post._id);
         setEditing(true);
@@ -87,7 +87,8 @@ export const MyPosts = () => {
                     <thead>
                         <tr>
                             <th>Description</th>
-                            <th>Actions</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,7 +102,7 @@ export const MyPosts = () => {
                                             value={editposts.description}
                                             onChange={editInputHandler}
                                         />
-                                        
+
                                     ) : (
                                         post.description || 'Not available'
                                     )}
@@ -112,6 +113,8 @@ export const MyPosts = () => {
                                     ) : (
                                         <button type="button" onClick={() => editButtonHandler(post)}>Edit</button>
                                     )}
+                                </td>
+                                <td>
                                     <button type="button" name={post._id} onClick={deletePostHandler}>Delete</button>
                                 </td>
                             </tr>
