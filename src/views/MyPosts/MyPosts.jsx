@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { deletePostById } from '../../services/postApiCalls';
+import { deletePostById, getMyPosts } from '../../services/postApiCalls';
 
 export const MyPosts = () => {
 
@@ -9,15 +9,6 @@ export const MyPosts = () => {
     const navigate = useNavigate();
     const { passport } = useAuth();
     const token = passport ? passport.token : null;
-
-    const formatDate = (isoDate) => {
-        const date = new Date(isoDate);
-        return date.toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-        });
-    };
 
     useEffect(() => {
         if (!token) {

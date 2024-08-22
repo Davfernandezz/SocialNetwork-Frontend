@@ -50,3 +50,19 @@ export const deletePostById = async (token, id) => {
         throw error;
     }
 }
+
+  export const getMyPosts = async (token) => {
+    try {
+        const response = await fetch(`${URL}/own`, {
+            method: "GET",
+            headers: {
+              "content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+        return await response.json()
+    } catch (error) {
+        console.error("Error getting my posts:", error);
+        throw error;
+    }
+}
