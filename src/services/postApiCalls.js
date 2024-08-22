@@ -66,3 +66,20 @@ export const deletePostById = async (token, id) => {
         throw error;
     }
 }
+
+export const updatePosts = async (id, data, token) => {
+    try {
+        const response = await fetch(`${URL}/own/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(data),
+        });
+        return await response.json()
+    } catch (error) {
+        console.error("Error updating post:", error);
+        throw error;
+    }
+}

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { deletePostById, getMyPosts } from '../../services/postApiCalls';
+import { deletePostById, getMyPosts, updatePosts } from '../../services/postApiCalls';
 
 export const MyPosts = () => {
     const [posts, setPosts] = useState([]);
     const [editposts, setEditposts] = useState({
         description: "",
+        id: null, 
     });
     const [editting, setEditing] = useState(false);
     const [currentEditId, setCurrentEditId] = useState(null);
@@ -40,6 +41,7 @@ export const MyPosts = () => {
     const editButtonHandler = (post) => {
         setEditposts({
             description: post.description,
+            id: post._id 
         });
         setCurrentEditId(post._id);
         setEditing(true);
@@ -62,13 +64,18 @@ export const MyPosts = () => {
     };
 
     const confirmButtonHandler = async () => {
-        const token = passport.token;
-        const response = await updateProfile(editposts, token);
+        if (!editposts.id) {
+            console.error(error);
+            return;
+        }
+        const response = await updatePosts(editposts.id, editposts, token);
         if (response.success) {
-            const newData = await getUserProfile(token);
-            setProfileData(newData.data);
+            const newData = await getMyPosts(token);
+            setPosts(newData.data);
             setEditing(false);
             setCurrentEditId(null);
+        } else {
+            console.error("Error updating post:", response.message);
         }
     };
 
@@ -94,6 +101,7 @@ export const MyPosts = () => {
                                             value={editposts.description}
                                             onChange={editInputHandler}
                                         />
+                                        
                                     ) : (
                                         post.description || 'Not available'
                                     )}

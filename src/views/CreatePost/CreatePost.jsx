@@ -29,7 +29,7 @@ export const CreatePost = () => {
         try {
             const response = await createPost(newPost, passport.token);
             if (response.success) {
-                navigate("/profile");
+                navigate("/allPosts");
             }
         } catch (error) {
             console.log(error);
