@@ -4,8 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { deletePostById, getMyPosts } from '../../services/postApiCalls';
 
 export const MyPosts = () => {
-
     const [posts, setPosts] = useState([]);
+    const [editposts, setEditposts] = useState({
+        description: "",
+    });
+    const [editting, setEditing] = useState(false);
+    const [currentEditId, setCurrentEditId] = useState(null);
     const navigate = useNavigate();
     const { passport } = useAuth();
     const token = passport ? passport.token : null;
@@ -15,7 +19,6 @@ export const MyPosts = () => {
             navigate('/login');
             return;
         }
-        
         const bringMyPosts = async () => {
             const MyPosts = await getMyPosts(token);
             if (MyPosts.success) {
@@ -24,10 +27,23 @@ export const MyPosts = () => {
                 navigate('/login');
             }
         };
-
         bringMyPosts();
-
     }, [navigate, token]);
+
+    const editInputHandler = (e) => {
+        setEditposts({
+            ...editposts,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const editButtonHandler = (post) => {
+        setEditposts({
+            description: post.description,
+        });
+        setCurrentEditId(post._id);
+        setEditing(true);
+    };
 
     const deletePostHandler = async (e) => {
         if (!token) {
@@ -45,35 +61,58 @@ export const MyPosts = () => {
         }
     };
 
-  return (
-    <>
-           <h1>My posts dashboard</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Description</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {posts.length ? (
-                        posts.map((post) => (
+    const confirmButtonHandler = async () => {
+        const token = passport.token;
+        const response = await updateProfile(editposts, token);
+        if (response.success) {
+            const newData = await getUserProfile(token);
+            setProfileData(newData.data);
+            setEditing(false);
+            setCurrentEditId(null);
+        }
+    };
+
+    return (
+        <>
+            <h1>My posts dashboard</h1>
+            {posts.length ? (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {posts.map((post) => (
                             <tr key={post._id}>
-                                <td>{post._id}</td>
-                                <td>{post.description || 'Not available'}</td>
                                 <td>
+                                    {currentEditId === post._id && editting ? (
+                                        <input
+                                            type="text"
+                                            name="description"
+                                            value={editposts.description}
+                                            onChange={editInputHandler}
+                                        />
+                                    ) : (
+                                        post.description || 'Not available'
+                                    )}
+                                </td>
+                                <td>
+                                    {currentEditId === post._id && editting ? (
+                                        <button type="button" onClick={confirmButtonHandler}>Save</button>
+                                    ) : (
+                                        <button type="button" onClick={() => editButtonHandler(post)}>Edit</button>
+                                    )}
                                     <button type="button" name={post._id} onClick={deletePostHandler}>Delete</button>
                                 </td>
                             </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td>No posts found.</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
-            </>
-  )
-}
+                        ))}
+                    </tbody>
+                </table>
+            ) : (
+                <p>No posts found.</p>
+            )}
+        </>
+    );
+};
