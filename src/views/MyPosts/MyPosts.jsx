@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { deletePostById, getMyPosts, updatePosts } from '../../services/postApiCalls';
+import "./MyPosts.css";
 
 export const MyPosts = () => {
     const [posts, setPosts] = useState([]);
@@ -81,46 +82,45 @@ export const MyPosts = () => {
 
     return (
         <>
-            <h1>My posts dashboard</h1>
+            <h1 className="text-center my-4">My posts dashboard</h1>
             {posts.length ? (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Description</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {posts.map((post) => (
-                            <tr key={post._id}>
-                                <td>
-                                    {currentEditId === post._id && editting ? (
-                                        <input
-                                            type="text"
-                                            name="description"
-                                            value={editposts.description}
-                                            onChange={editInputHandler}
-                                        />
-
-                                    ) : (
-                                        post.description || 'Not available'
-                                    )}
-                                </td>
-                                <td>
-                                    {currentEditId === post._id && editting ? (
-                                        <button type="button" onClick={confirmButtonHandler}>Save</button>
-                                    ) : (
-                                        <button type="button" onClick={() => editButtonHandler(post)}>Edit</button>
-                                    )}
-                                </td>
-                                <td>
-                                    <button type="button" name={post._id} onClick={deletePostHandler}>Delete</button>
-                                </td>
+                <div className="container">
+                    <table className="table table-bordered table-striped">
+                        <thead className="thead-dark">
+                            <tr>
+                                <th>Description</th>
+                                <th>Actions</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {posts.map((post) => (
+                                <tr key={post._id}>
+                                    <td>
+                                        {currentEditId === post._id && editting ? (
+                                            <input
+                                                type="text"
+                                                name="description"
+                                                value={editposts.description}
+                                                onChange={editInputHandler}
+                                                className="form-control"
+                                            />
+                                        ) : (
+                                            post.description || 'Not available'
+                                        )}
+                                    </td>
+                                    <td>
+                                        {currentEditId === post._id && editting ? (
+                                            <button type="button" onClick={confirmButtonHandler} className="btn btn-success">Save</button>
+                                        ) : (
+                                            <button type="button" onClick={() => editButtonHandler(post)} className="btn btn-primary">Edit</button>
+                                        )}
+                                        <button type="button" name={post._id} onClick={deletePostHandler} className="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             ) : (
                 <p>No posts found.</p>
             )}
