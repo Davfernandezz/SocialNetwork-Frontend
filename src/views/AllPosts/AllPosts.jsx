@@ -9,23 +9,25 @@ export const AllPosts = () => {
   const { passport } = useAuth();
 
   useEffect(() => {
-    if (passport && passport.token) {
-      const bringAllPosts = async () => {
-        try {
-          const response = await getAllPosts(passport.token);
-          if (response.success) {
-            setPosts(response.data);
-          } else {
-            console.error("Error fetching posts:", response.message);
-          }
-        } catch (error) {
-          console.error("Error fetching posts:", error);
-        }
-      };
-
-      bringAllPosts();
+    if (!passport || !passport.token) {
+      navigate('/login'); 
+      return; 
     }
-  }, [passport]);
+    const bringAllPosts = async () => {
+      try {
+        const response = await getAllPosts(passport.token);
+        if (response.success) {
+          setPosts(response.data);
+        } else {
+          console.error("Error fetching posts:", response.message);
+        }
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    };
+
+    bringAllPosts();
+  }, [passport, navigate]);
 
   return (
     <>
