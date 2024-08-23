@@ -37,18 +37,38 @@ export const Register = () => {
     }
 
     return (
-        <>
-            <h1>Register</h1>
-          <div>
-            <CInput type="email" name="email" placeholder='Email' emitFunction={handleChange} />
+        <div className="register-wrapper">
+          <div className="register-container">
+            <h1 className="text-center mb-4">Register</h1>
+            <form>
+              <div className="mb-3">
+                <CInput
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  emitFunction={handleChange}
+                  className="form-control"
+                />
+              </div>
+              <div className="mb-3">
+                <CInput
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  emitFunction={handleChange}
+                  className="form-control"
+                />
+              </div>
+              <button
+                type="button"
+                onClick={register}
+                className="btn btn-primary w-100"
+              >
+                Register
+              </button>
+            </form>
           </div>
-          <div>
-            <CInput type="password" name="password" placeholder='Password' emitFunction={handleChange} />
-          </div>
-          <div>
-            <input type="button" value="Register" onClick={register} />
-          </div>
-        </>
-    )
-}
-export default Register;
+        </div>
+      );
+    };
+    
