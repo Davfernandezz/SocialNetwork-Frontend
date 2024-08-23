@@ -81,49 +81,75 @@ export const MyPosts = () => {
     };
 
     return (
-        <>
-            <h1 className="text-center my-4">My posts dashboard</h1>
-            {posts.length ? (
-                <div className="container">
-                    <table className="table table-bordered table-striped">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th>Description</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {posts.map((post) => (
-                                <tr key={post._id}>
-                                    <td>
-                                        {currentEditId === post._id && editting ? (
-                                            <input
-                                                type="text"
-                                                name="description"
-                                                value={editposts.description}
-                                                onChange={editInputHandler}
-                                                className="form-control"
-                                            />
-                                        ) : (
-                                            post.description || 'Not available'
-                                        )}
-                                    </td>
-                                    <td>
-                                        {currentEditId === post._id && editting ? (
-                                            <button type="button" onClick={confirmButtonHandler} className="btn btn-success">Save</button>
-                                        ) : (
-                                            <button type="button" onClick={() => editButtonHandler(post)} className="btn btn-primary">Edit</button>
-                                        )}
-                                        <button type="button" name={post._id} onClick={deletePostHandler} className="btn btn-danger">Delete</button>
-                                    </td>
+        <div className="my-posts-wrapper">
+            <div className="my-posts-container">
+                {posts.length ? (
+                    <div className="table-responsive">
+                        <table className="table custom-table">
+                            <thead>
+                                <tr>
+                                    <th colSpan="3" className="table-title">My Posts Dashboard</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            ) : (
-                <p>No posts found.</p>
-            )}
-        </>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {posts.map((post) => (
+                                    <tr key={post._id}>
+                                        <td>
+                                            {currentEditId === post._id && editting ? (
+                                                <input
+                                                    type="text"
+                                                    name="description"
+                                                    value={editposts.description}
+                                                    onChange={editInputHandler}
+                                                    className="form-control edit-input"
+                                                />
+                                            ) : (
+                                                post.description || 'Not available'
+                                            )}
+                                        </td>
+                                        <td>
+                                            {currentEditId === post._id && editting ? (
+                                                <button
+                                                    type="button"
+                                                    onClick={confirmButtonHandler}
+                                                    className="btn btn-save"
+                                                >
+                                                    Save
+                                                </button>
+                                            ) : (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => editButtonHandler(post)}
+                                                    className="btn btn-edit"
+                                                >
+                                                    Edit
+                                                </button>
+                                            )}
+                                        </td>
+                                        <td>
+                                            <button
+                                                type="button"
+                                                name={post._id}
+                                                onClick={deletePostHandler}
+                                                className="btn btn-delete"
+                                            >
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                ) : (
+                    <p className="no-posts-message">No posts found.</p>
+                )}
+            </div>
+        </div>
     );
-};
+    };

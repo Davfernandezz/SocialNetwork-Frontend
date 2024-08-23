@@ -1,12 +1,114 @@
-.table {
-    margin-top: 20px;
+.my-posts-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.table th, .table td {
+.my-posts-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #af1d1d;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-title {
+    background-color: #007bff;
+    color: #fff;
     text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.custom-table thead th {
+    background-color: #323131;
+    color: #ffffff;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #af1d1d;
+}
+
+.custom-table tbody tr {
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.custom-table tbody td {
+    padding: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.edit-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid #007bff;
+    border-radius: 4px;
 }
 
 .btn {
-    margin-right: 5px;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: 2px solid #007bff; 
+}
+
+.btn-edit {
+    background-color: #17a2b8;
+    color: #ffffff;
+}
+
+.btn-edit:hover {
+    background-color: #138496;
+    transform: scale(1.05);
+}
+
+.btn-save {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+.btn-save:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+.no-posts-message {
+    text-align: center;
+    color: #6c757d;
+    font-size: 1.5rem;
+    margin-top: 2rem;
 }
 
