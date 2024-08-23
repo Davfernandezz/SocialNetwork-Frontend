@@ -1,8 +1,9 @@
 .my-posts-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
+    padding-top: 3em;
 }
 
 .my-posts-container {
@@ -13,20 +14,17 @@
     background-color: #af1d1d;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow: hidden; 
+}
+
+.table-responsive {
+    overflow-y: auto;
 }
 
 .custom-table {
     width: 100%;
     border-collapse: collapse;
-}
-
-.table-title {
-    background-color: #007bff;
-    color: #fff;
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    padding: 1rem;
 }
 
 .custom-table thead th {
@@ -58,8 +56,9 @@
 .edit-input {
     width: 100%;
     padding: 0.5rem;
-    border: 2px solid #007bff;
+    border: 2px solid #323131;
     border-radius: 4px;
+    box-sizing: border-box; 
 }
 
 .btn {
@@ -111,4 +110,3 @@
     font-size: 1.5rem;
     margin-top: 2rem;
 }
-
