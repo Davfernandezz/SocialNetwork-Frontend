@@ -85,10 +85,10 @@ export const Admin = () => {
         <div className="admin-dashboard-wrapper">
           <div className="admin-dashboard-container">
             <h1>Admin Users Dashboard</h1>
-            <div className="table-users-responsive">
-              <table className="table table-users">
+            <div className="table-responsive">
+              <table className="table custom-table-admin">
                 <thead>
-                  <tr>
+                  <tr >
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -126,8 +126,8 @@ export const Admin = () => {
             </div>
       
             <h1>Admin Posts Dashboard</h1>
-            <div className="table-posts-responsive">
-              <table className="table table-posts">
+            <div className="table-responsive">
+              <table className="table custom-table-admin">
                 <thead>
                   <tr>
                     <th>ID</th>

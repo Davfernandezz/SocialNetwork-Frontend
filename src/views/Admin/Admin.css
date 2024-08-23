@@ -16,37 +16,6 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
 
-  .custom-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .custom-table thead th {
-    background-color: #323131;
-    color: #ffffff;
-    padding: 1rem;
-    text-align: center;
-    font-size: 1.2rem;
-    border-bottom: 2px solid #007bff;
-  }
-  
-  .custom-table tbody tr {
-    background-color: #ffffff;
-    transition: background-color 0.3s ease;
-  }
-  
-  .custom-table tbody tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .custom-table tbody td {
-    padding: 1rem;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 1rem;
-    border-bottom: 1px solid #dee2e6;
-  }
-  
   .btn {
     padding: 0.5rem 1rem;
     border-radius: 25px;
@@ -76,3 +45,10 @@
     font-size: 1.2rem;
     padding: 1rem;
   }
+
+  .custom-table-admin thead th {
+    background-color: #323131;
+    color: #ffffff;
+    
+    border-bottom: 2px solid #af1d1d;
+}

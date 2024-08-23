@@ -83,13 +83,11 @@ export const MyPosts = () => {
     return (
         <div className="my-posts-wrapper">
             <div className="my-posts-container">
+                <h1>My Posts Dashboard</h1>
                 {posts.length ? (
                     <div className="table-responsive">
                         <table className="table custom-table">
                             <thead>
-                                <tr>
-                                    <th colSpan="3" className="table-title">My Posts Dashboard</th>
-                                </tr>
                                 <tr>
                                     <th>Description</th>
                                     <th>Edit</th>
