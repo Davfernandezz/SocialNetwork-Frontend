@@ -30,7 +30,6 @@ export const Register = () => {
             } else {
                 alert(response.message)
             }
-            console.log(response)
         } catch (error) {
             console.log(error);
         }

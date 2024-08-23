@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { deleteUserById, getUsers } from '../../services/userApiCalls';
-import "./Admin.css";
 import { deletePostById, getAllPosts } from '../../services/postApiCalls';
+import "./Admin.css";
 
 export const Admin = () => {
     const [users, setUsers] = useState([]);
@@ -82,66 +82,86 @@ export const Admin = () => {
     };
 
     return (
-        <>
-            <h1>Admin users dashboard</h1>
-            <table>
+        <div className="admin-dashboard-wrapper">
+          <div className="admin-dashboard-container">
+            <h1>Admin Users Dashboard</h1>
+            <div className="table-users-responsive">
+              <table className="table table-users">
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Creation Date</th>
-                        <th>Actions</th>
-                    </tr>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Creation Date</th>
+                    <th>Actions</th>
+                  </tr>
                 </thead>
                 <tbody>
-                    {users.length ? (
-                        users.map((user) => (
-                            <tr key={user._id}>
-                                <td>{user._id}</td>
-                                <td>{user.name || 'Not available'}</td>
-                                <td>{user.email}</td>
-                                <td>{formatDate(user.createdAt)}</td>
-                                <td>
-                                    <button type="button" name={user._id} onClick={deleteUserHandler}>Delete</button>
-                                </td>
-                            </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td>No users found.</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
-
-            <h1>Admin posts dashboard</h1>
-            <table>
-                <thead>
+                  {users.length ? (
+                    users.map((user) => (
+                      <tr key={user._id}>
+                        <td>{user._id}</td>
+                        <td>{user.name || 'Not available'}</td>
+                        <td>{user.email}</td>
+                        <td>{formatDate(user.createdAt)}</td>
+                        <td>
+                          <button
+                            type="button"
+                            name={user._id}
+                            onClick={deleteUserHandler}
+                            className="btn btn-delete"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
                     <tr>
-                        <th>ID</th>
-                        <th>Description</th>
-                        <th>Actions</th>
+                      <td colSpan="5" className="no-data">No users found.</td>
                     </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+      
+            <h1>Admin Posts Dashboard</h1>
+            <div className="table-posts-responsive">
+              <table className="table table-posts">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                  </tr>
                 </thead>
                 <tbody>
-                    {posts.length ? (
-                        posts.map((post) => (
-                            <tr key={post._id}>
-                                <td>{post._id}</td>
-                                <td>{post.description || 'Not available'}</td>
-                                <td>
-                                    <button type="button" name={post._id} onClick={deletePostHandler}>Delete</button>
-                                </td>
-                            </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td>No posts found.</td>
-                        </tr>
-                    )}
+                  {posts.length ? (
+                    posts.map((post) => (
+                      <tr key={post._id}>
+                        <td>{post._id}</td>
+                        <td>{post.description || 'Not available'}</td>
+                        <td>
+                          <button
+                            type="button"
+                            name={post._id}
+                            onClick={deletePostHandler}
+                            className="btn btn-delete"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="3" className="no-data">No posts found.</td>
+                    </tr>
+                  )}
                 </tbody>
-            </table>
-        </>
-    );
-};
+              </table>
+            </div>
+          </div>
+        </div>
+      );
+    };
