@@ -38,6 +38,7 @@ h1, h2 {
 
 p, th, td, tr, label, input, select, .btn {
   font-family: 'Lilita One';
+  color: #ffffff;
 }
 
 p, div{
