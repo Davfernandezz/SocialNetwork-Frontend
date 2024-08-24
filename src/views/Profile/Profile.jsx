@@ -71,51 +71,55 @@ export const Profile = () => {
   }
 
   return (
-    <div>
-      <h1>Profile</h1>
-      <h2>Welcome {profileData.email}</h2>
+    <div className="profile-wrapper">
+        <div className="profile-container">
+            <h1>Profile</h1>
+            <h2>Welcome, {profileData.email}</h2>
 
-      {editting && (
-        <>
-          <CInput
-            type="text"
-            name="name"
-            placeholder="Name"
-            emitFunction={editInputHandler}
-          />
-          <CInput
-            type="email"
-            name="email"
-            placeholder="Email"
-            emitFunction={editInputHandler}
-          />
-        </>
-      )}
+            {editting ? (
+                <>
+                    <CInput
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        emitFunction={editInputHandler}
+                        className="profile-input"
+                    />
+                    <CInput
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        emitFunction={editInputHandler}
+                        className="profile-input"
+                    />
+                </>
+            ) : (
+                <div className="profile-info">
+                    <p>Name: {profileData.name || "Not available"}</p>
+                    <p>Email: {profileData.email}</p>
+                    <p>Created at: {formatDate(profileData.createdAt)}</p>
+                </div>
+            )}
 
-      {!editting && (
-        <>
-          <p>Name: {profileData.name || "Not available"}</p>
-          <p>Email: {profileData.email}</p>
-        </>
-      )}
-
-      <p>
-        Created_at: {formatDate(profileData.createdAt)}
-      </p>
-      <CInput
-        type="button"
-        name="edit"
-        value={!editting ? "Edit" : "Cancel"}
-        emitOnClickButton={editButtonHandler}
-      />
-      {editting && (
-        <CInput
-          type="button"
-          name="save"
-          value="Save changes"
-          emitOnClickButton={confirmButtonHandler}
-        />
-      )}
+            <div className="profile-actions">
+                <CInput
+                    type="button"
+                    name="edit"
+                    value={!editting ? "Edit" : "Cancel"}
+                    emitOnClickButton={editButtonHandler}
+                    className={!editting ? "btn btn-edit" : "btn btn-cancel"}
+                />
+                {editting && (
+                    <CInput
+                        type="button"
+                        name="save"
+                        value="Save changes"
+                        emitOnClickButton={confirmButtonHandler}
+                        className="btn btn-save"
+                    />
+                )}
+            </div>
+        </div>
     </div>
-  )
+);
 }

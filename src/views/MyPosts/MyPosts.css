@@ -70,10 +70,6 @@
     cursor: pointer;
 }
 
-.btn:focus {
-    outline: 2px solid #007bff; 
-}
-
 .btn-edit {
     background-color: #17a2b8;
     color: #ffffff;
