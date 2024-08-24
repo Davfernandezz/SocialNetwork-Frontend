@@ -24,7 +24,7 @@ export const Header = () => {
             navigate('/');
           }}
         >
-          <span className="red">SOCIAL</span>NETWORK
+          <span className="red">META</span>VERSO
         </a>
         <button
           className="navbar-toggler"
