@@ -93,7 +93,11 @@ export const putLikeById = async (id, token) => {
                 "Content-Type": "application/json"
             }
         });
-        return await response.json();
+        const data = await response.json();
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+        return data;
     } catch (error) {
         console.error("Error toggling like:", error);
         throw error;

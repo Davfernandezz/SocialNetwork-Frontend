@@ -5,50 +5,55 @@ import { useAuth } from '../../contexts/AuthContext';
 
 export const AllPosts = () => {
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const { passport } = useAuth();
 
-  useEffect(() => {
+  const fetchPosts = async () => {
     if (!passport || !passport.token) {
-      navigate('/login'); 
-      return; 
+      navigate('/login');
+      return;
     }
-    const bringAllPosts = async () => {
-      try {
-        const response = await getAllPosts(passport.token);
-        if (response.success) {
-          setPosts(response.data);
-        } else {
-          console.error("Error fetching posts:", response.message);
-        }
-      } catch (error) {
-        console.error("Error fetching posts:", error);
+    try {
+      setIsLoading(true);
+      const response = await getAllPosts(passport.token);
+      if (response.success) {
+        setPosts(response.data.map(post => ({
+          ...post,
+          like: Array.isArray(post.like) ? post.like : []
+        })));
+      } else {
+        console.error("Error fetching posts:", response.message);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    bringAllPosts();
+  useEffect(() => {
+    fetchPosts();
   }, [passport, navigate]);
 
   const handleLike = async (postId) => {
     try {
       const response = await putLikeById(postId, passport.token);
       if (response.success) {
-        setPosts(posts.map(post => {
-          if (post._id === postId) {
-            const updatedLikes = post.like.includes(passport.userId)
-              ? post.like.filter(id => id !== passport.userId)
-              : [...post.like, passport.userId];
-            return { ...post, like: updatedLikes };
-          }
-          return post;
-        }));
+        setPosts(prevPosts => prevPosts.map(post => 
+          post._id === postId ? { ...post, like: response.data.like } : post
+        ));
       } else {
-        console.error("Error toggling like:", response.message);
+        console.error("Error liking post:", response.message);
       }
     } catch (error) {
-      console.error("Error toggling like:", error);
+      console.error("Error liking post:", error);
     }
   };
+
+  if (isLoading) {
+    return <p>Loading posts...</p>;
+  }
 
   return (
     <>
@@ -61,7 +66,7 @@ export const AllPosts = () => {
             <div key={post._id}>
               <div>{post.description}</div>
               <button onClick={() => handleLike(post._id)}>
-                {post.like && post.like.includes(passport.userId) ? 'Unlike' : 'Like'}
+                Like
               </button>
               <span>Likes: {post.like ? post.like.length : 0}</span>
             </div>
