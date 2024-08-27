@@ -64,6 +64,7 @@ export const AllPosts = () => {
         <div>
           {posts.map((post) => (
             <div key={post._id}>
+              <div>Posted by: {post.userId?.email || 'Unknown User'}</div>
               <div>{post.description}</div>
               <button onClick={() => handleLike(post._id)}>
                 Like
@@ -75,4 +76,4 @@ export const AllPosts = () => {
       )}
     </>
   );
-};
+}
