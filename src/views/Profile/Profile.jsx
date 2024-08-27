@@ -74,7 +74,7 @@ export const Profile = () => {
     <div className="profile-wrapper">
         <div className="profile-container">
             <h1>Profile</h1>
-            <h2>Welcome, {profileData.email}</h2>
+            <h2>Welcome, {profileData.email}✨</h2>
 
             {editting ? (
                 <>
