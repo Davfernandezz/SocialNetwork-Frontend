@@ -131,6 +131,7 @@ export const Admin = () => {
                 <thead>
                   <tr>
                     <th>ID</th>
+                    <th>User</th>
                     <th>Description</th>
                     <th>Actions</th>
                   </tr>
@@ -140,6 +141,7 @@ export const Admin = () => {
                     posts.map((post) => (
                       <tr key={post._id}>
                         <td>{post._id}</td>
+                        <td>{post.userId?.email || 'Not available'}</td>
                         <td>{post.description || 'Not available'}</td>
                         <td>
                           <button
