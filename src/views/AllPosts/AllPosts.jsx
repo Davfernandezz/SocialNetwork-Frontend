@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { getAllPosts, putLikeById } from '../../services/postApiCalls';
 import { useAuth } from '../../contexts/AuthContext';
@@ -60,12 +61,18 @@ export const AllPosts = () => {
     <div className="posts-wrapper">
       <h1>All Posts</h1>
       {posts.length === 0 ? (
-        <p className="no-posts-message">No posts found...</p>
+        <div className="no-posts-wrapper">
+          <div className="no-posts-container">
+            <p className="no-posts-message">No posts found...</p>
+            <p className="create-post-message">Why not create one?</p>
+            <Link to="/createPost" className="create-post-link">Create Post</Link>
+          </div>
+        </div>
       ) : (
         <div className="posts-container">
           {posts.map((post) => (
             <div key={post._id} className="post-card">
-              <div className= "post-likes" >Posted by: {post.userId?.email || 'Unknown User'}</div>
+              <div className="post-user">Posted by: {post.userId?.email || 'Unknown User'}</div>
               <div className="description-posts">{post.description}</div>
               <button onClick={() => handleLike(post._id)} className="btn-like">
                 Like

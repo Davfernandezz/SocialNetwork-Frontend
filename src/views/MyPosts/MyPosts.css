@@ -102,7 +102,43 @@
 
 .no-posts-message {
     text-align: center;
-    color: #ffffff;
+    color: #666;
     font-size: 1.5rem;
     margin-top: 2rem;
 }
+
+.no-posts-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+  }
+  
+  .no-posts-container {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .create-post-message {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .create-post-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .create-post-link:hover {
+    background-color: #0056b3;
+  }

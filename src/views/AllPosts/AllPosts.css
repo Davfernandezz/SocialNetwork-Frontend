@@ -9,7 +9,7 @@
 }
 
 .no-posts-message {
-    color: #ffffff;
+    color: #666;
     font-size: 1.5rem;
 }
 
@@ -45,7 +45,7 @@
 
 .post-user {
     font-weight: bold;
-    color: #af1d1d;
+    color: #323131;
 }
 
 .post-body {
@@ -80,3 +80,45 @@
     font-size: 1rem;
     color: #6c757d;
 }
+
+.no-posts-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+  }
+  
+  .no-posts-container {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .no-posts-message {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .create-post-message {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .create-post-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .create-post-link:hover {
+    background-color: #0056b3;
+  }
