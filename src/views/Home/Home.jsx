@@ -31,7 +31,7 @@ export const Home = () => {
             <img
               alt="Imagen 1"
               className="d-block carousel-image"
-              src=".../../../img/SocialNetwork1.jpg"
+              src=".../../../img/Portada.jpg"
             />
             <div className="carousel-caption">
               <h5 className="animated bounceInRight" style={{ animationDelay: '1s' }}>

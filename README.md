@@ -2,7 +2,7 @@
 
 Welcome to my SocialNetwork Frontend project, I hope you like it!💯
 <br><br>
-<img width="900" alt="Portada" src="img/SocialNetwork1.JPG">
+<img width="900" alt="Portada" src="img/Portada.JPG">
 </a>
 
 <details>
@@ -118,11 +118,9 @@ Used technology:
 
 <img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/AllPosts.JPG">
 
-### Search Posts🔍
+<!-- ### Search Posts🔍
 
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/SearchPosts.JPG">
-
-
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/SearchPosts.JPG"> -->
 
 
 ## Future functionalities⏭️
