@@ -2,7 +2,7 @@
 
 Welcome to my SocialNetwork Frontend project, I hope you like it!💯
 <br><br>
-<img src="img/SocialNetwork1.JPG" width="900">
+<img width="900" alt="Portada" src="img/SocialNetwork1.JPG">
 </a>
 
 <details>
