@@ -88,10 +88,6 @@ Used technology:
 ### Home🏠
 <img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Home.JPG">
 
-### Services🔧
-
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Services.JPG">
-
 ### Login and Register🔑
 
 <img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Login.JPG">
@@ -99,21 +95,27 @@ Used technology:
 
 ### Profile👥
 
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Profile1.JPG">
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/Profile.JPG">
 
 ### Admin Dashboard💯
 
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/admin.JPG">
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/AdminUsers.JPG">
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/AdminPosts.JPG">
 
-### Create Posts
+
+### Create Posts✏️
 
 <img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/CreatePosts.JPG">
 
-### All Posts
+### My Posts📓
+
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/MyPosts.JPG">
+
+### All Posts👀
 
 <img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/AllPosts.JPG">
 
-### Search Posts
+### Search Posts🔍
 
 <img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/SearchPosts.JPG">
 
