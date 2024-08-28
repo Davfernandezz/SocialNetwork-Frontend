@@ -22,9 +22,12 @@ Welcome to my SocialNetwork Frontend project, I hope you like it!✨
 <br>
 
 ## Description📚
+This project consists of the creation of the front end for "Metaverse", a social network that connects to our API in charge of managing the platform's business model. To do this, we will develop views that will allow users to register, log in, view and modify their profile, as well as interact with other users through posts. In addition, users will be able to explore the content of the social network and discover popular trends.
+
+The project will also include an administrator view from which you can manage application information, monitor user activity, and moderate content published on the platform, ensuring a safe and attractive environment for everyone.
 <br><br>
 <p align="center">
-<img width="250" alt="" src="">
+<img width="250" alt="" src="img/Descripcion.jpg">
 </p>
 
 ## Objetive🎯
