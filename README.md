@@ -1,8 +1,8 @@
-# SocialNetwork Frontend☄️
+# SocialNetwork Frontend🥤
 
-Welcome to my SocialNetwork Frontend project, I hope you like it!✨
+Welcome to my SocialNetwork Frontend project, I hope you like it!💯
 <br><br>
-<img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/80728820-e06b-4f96-9c9e-9df46f0cc0a5" width="900">
+<img src="img/SocialNetwork1.JPG" width="900">
 </a>
 
 <details>
@@ -126,9 +126,9 @@ Used technology:
 
 
 ## Future functionalities⏭️
-- 
-- 
-- 
+- Option to follow.
+- Leave comments on posts.
+- Data validation.
 - ...
 
 
