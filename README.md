@@ -2,7 +2,7 @@
 
 Welcome to my SocialNetwork Frontend project, I hope you like it!💯
 <br><br>
-<img width="900" alt="Portada" src="img/Portada.JPG">
+<img width="900" alt="Portada" src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/af212da4-8588-4d7c-8400-16e56f2746a0">
 </a>
 
 <details>
