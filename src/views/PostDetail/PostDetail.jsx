@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPostById, putLikeById } from '../../services/postApiCalls';
 import { useAuth } from '../../contexts/AuthContext';
+import "./PostDetail.css";
 
 export const PostDetail = () => {
   const [post, setPost] = useState(null);
@@ -56,12 +57,16 @@ export const PostDetail = () => {
   }
 
   return (
-    <div>
-      <h1>Post Detail</h1>
-      <h3>Posted by: {post.userId?.email || 'Unknown User'}</h3>
-      <p>{post.description}</p>
-      <button onClick={handleLike}>Like</button>
-      <span>Likes: {post.like ? post.like.length : 0}</span>
+    <div className="post-detail-wrapper">
+      <h1 className="post-detail-title">Post Detail</h1>
+      <div className="post-detail-card">
+        <h3 className="post-detail-user">Posted by: {post.userId?.email || 'Not available'}</h3>
+        <p className="post-detail-description">{post.description}</p>
+        <div className="post-detail-footer">
+          <button onClick={handleLike} className="btn-like">Like</button>
+          <span className="post-likes">Likes: {post.like ? post.like.length : 0}</span>
+        </div>
+      </div>
     </div>
   );
 };

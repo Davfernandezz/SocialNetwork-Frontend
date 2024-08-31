@@ -72,7 +72,7 @@ export const AllPosts = () => {
         <div className="posts-container">
           {posts.map((post) => (
             <div key={post._id} className="post-card">
-              <div className="post-user">Posted by: {post.userId?.email || 'Unknown User'}</div>
+              <div className="post-user">Posted by: {post.userId?.email || 'Not available'}</div>
               <Link to={`/postDetail/${post._id}`} className="post-link">
                 <div className="description-posts">{post.description}</div>
               </Link>
