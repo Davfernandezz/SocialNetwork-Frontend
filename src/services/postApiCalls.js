@@ -113,7 +113,8 @@ export const getPostById = async (id, token) => {
                 "Authorization": `Bearer ${token}`
             }
         });
-        return await response.json()
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.error("Error getting posts:", error);
         throw error;

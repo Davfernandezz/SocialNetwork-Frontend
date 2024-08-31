@@ -31,7 +31,7 @@ function Body() {
         <Route path="/createPost" element={<CreatePost />} />
         <Route path="/allPosts" element={<AllPosts />} />
         <Route path="/myPosts" element={<MyPosts />} />
-        <Route path="/postDetail/:postId" element={<PostDetail />} />
+        <Route path="/postDetail/:id" element={<PostDetail />} />
         {role === "admin" && <Route path="/admin" element={<Admin />} />}
       </Routes>
     </>
