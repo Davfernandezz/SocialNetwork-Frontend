@@ -1,11 +1,11 @@
-.login-wrapper {
+.register-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
   }
   
-  .login-container {
+  .register-container {
     width: 100%;
     max-width: 400px;
     padding: 2rem;
@@ -13,30 +13,29 @@
     border-radius: 8px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
   .form-control {
-    border-radius: 0.375rem;
-    border-color: #ced4da; 
+    border-radius: 0.375rem; 
+    border-color: #ced4da;
   }
   
   .form-control:focus {
-    border-color: #007bff;
+    border-color: #007bff; 
     box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
   }
   
   .btn-primary {
-    background-color: #1569ca;
+    background-color: #007bff; 
     border-color: #007bff;
     border-radius: 0.375rem; 
     font-size: 1rem;
   }
   
   .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004085;
+    background-color: #0056b3; 
+    border-color: #004085; 
   }
   
   .btn-primary:active {
-    background-color: #004085;
-    border-color: #003a6b; 
+    background-color: #004085; 
+    border-color: #003a6b;
   }
