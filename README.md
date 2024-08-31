@@ -114,13 +114,13 @@ Used technology:
 
 <img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/MyPosts.JPG">
 
-### All Posts👀
+### All Posts🔍
 
 <img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/AllPosts.JPG">
 
-<!-- ### Search Posts🔍
+### Post Detail👀
 
-<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/SearchPosts.JPG"> -->
+<img width="1426" alt="Captura de pantalla 2023-01-30 a las 20 20 38" src="img/PostDetail.JPG">
 
 
 ## Future functionalities⏭️
