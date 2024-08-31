@@ -103,3 +103,19 @@ export const putLikeById = async (id, token) => {
         throw error;
     }
 };
+
+export const getPostById = async (id, token) => {
+    try {
+        const response = await fetch(`${URL}/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+        return await response.json()
+    } catch (error) {
+        console.error("Error getting posts:", error);
+        throw error;
+    }
+}

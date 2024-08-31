@@ -73,7 +73,9 @@ export const AllPosts = () => {
           {posts.map((post) => (
             <div key={post._id} className="post-card">
               <div className="post-user">Posted by: {post.userId?.email || 'Unknown User'}</div>
-              <div className="description-posts">{post.description}</div>
+              <Link to={`/postDetail/${post._id}`} className="post-link">
+                <div className="description-posts">{post.description}</div>
+              </Link>
               <button onClick={() => handleLike(post._id)} className="btn-like">
                 Like
               </button>
