@@ -66,6 +66,12 @@ Used technology:
 <a>
     <img src="https://img.shields.io/badge/node.js-026E00?style=for-the-badge&logo=node.js&logoColor=white" alt="NPM" alt="ts" />
 </a>
+<a>
+    <img src= "https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="mongo" />
+</a>
+<a>
+    <img src="https://img.shields.io/badge/-Mongoose-880000?style=for-the-badge&logo=node.js&logoColor=white" alt="ts" />
+</a>
 </div>
 
 ## Local installation🧾
@@ -78,10 +84,10 @@ Used technology:
 
 ### Backend⚙️
 
-1. Install docker and create a mysql container
+1. Install docker and create a mongo container
 2. Clone the repository
 3. ``` $ npm install  ```
-4. ``` $ npm db:refresh ```
+4. ``` $ npm db:seed ```
 5. ``` $ npm run dev ```
 
 
